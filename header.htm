@@ -1,0 +1,67 @@
+﻿<html> 
+<head> 
+<title>HCMT焊机计时系统</title> 
+<script language="javascript"> 
+function getusername(){
+var username = document.getElementById("user_name").value;
+username="1_"+username;
+loadXMLDoc(username);
+}
+function getyearmonth(){
+var yearmonth = document.getElementById("year").value+"_"+document.getElementById("month").value;
+yearmonth="2_"+yearmonth;
+loadXMLDoc(yearmonth);	
+}
+function loadXMLDoc(values) 
+{ 
+var xmlhttp; 
+if (window.XMLHttpRequest)   
+{   
+xmlhttp=new XMLHttpRequest();   
+} 
+else   
+{   
+xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");   
+} 
+xmlhttp.open("GET","MSG=" + values+".pht",true); xmlhttp.send(); 
+}			
+</script> 				
+</head>
+<body>
+<h1>Timing System of HCMT Welding Machine V1.0</h1>
+<h1>HCMT焊机计时系统 V1.0</h1>
+<h1>TIG_1#手工修补</h1>
+<hr size="5" color="black"/>
+<h1>设置区</h1>
+<div name="mydiv">
+<font size="6">
+<span>使用者:</span>
+<input type="text" id="user_name" style="font-size:36px;border:3px solid #000000;width:200px;" size="10">
+<br>
+<br>
+<button type="button" id="save_name_btn"   class="button" onclick="getusername()"  ><font size="7"color="blue">保存姓名</font></button>
+<br>
+<br>
+ 设置统计年月份:
+<input type="number"  id="year" style="font-size:36px;border:3px solid #000000;width:120px;" size="5">
+年  
+<input type="number"  id="month" style="font-size:36px;border:3px solid #000000;width:120px;" size="3">
+月  
+<br>
+<br>
+<button type="button" id="save_ym_btn"  class="button" onclick="getyearmonth()"  ><font size="7"color="blue">保存年月</font></button>
+<br>
+<br>
+<hr size="5" color="red"/>
+</font>
+</div> 	
+<h2>
+<button type="button" id="clean_time_btn"  class="button" onclick="loadXMLDoc(0)"><font size="8"color="red">时间清零</font></button>
+<p id="showtime"></p>
+</h2>
+<script language="javascript">
+var d = new Date();
+document.write("<h3>当前时间："+d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+'  '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+"</h3>");		
+</script>
+</body>
+</html>
